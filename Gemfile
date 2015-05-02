@@ -22,6 +22,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'spring-commands-rspec'
