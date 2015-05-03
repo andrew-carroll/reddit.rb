@@ -1,4 +1,5 @@
 require 'rails_helper'
+include SessionsHelper
 
 feature 'Guest logging into account' do
   background do
@@ -20,14 +21,5 @@ feature 'Guest logging into account' do
       expect(page).to_not have_content "incorrect"
       expect(page).to have_content "logout"
     end
-  end
-end
-
-def login_with(username: '', password: '')
-  visit login_path
-  within 'form#login' do
-    fill_in 'Username', with: username
-    fill_in 'Password', with: password
-    click_button 'Sign In'
   end
 end
