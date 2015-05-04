@@ -12,5 +12,6 @@ module SessionsHelper
     password = 'hunter2'
     user = create(:user, password: password)
     login_with(username: user.username, password: password)
+    return user
   end
 end

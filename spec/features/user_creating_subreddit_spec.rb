@@ -1,4 +1,5 @@
 require 'rails_helper'
+include SessionsHelper
 
 feature 'User creating subreddit' do
   context 'while not logged in' do
@@ -9,12 +10,12 @@ feature 'User creating subreddit' do
   end
 
   context 'while logged in' do
+    background do
+      @user = login() 
+    end
     context 'and the subreddit already exists' do
-      background do
-        user = create(:user)
-        create(:subreddit, name: 'programming', user: user)
-      end
       scenario 'fails and receives an error message' do
+        create(:subreddit, name: 'programming', user: @user)
         create_subreddit('programming')
         expect(page).to have_content "already exists"
       end
