@@ -1,0 +1,8 @@
+= flash[:error] if flash[:error]
+section
+  h1 Create a subreddit
+  = form_for @subreddit, url: new_subreddit_path,
+    html: { id: 'subreddit' } do |f|
+    = f.label :name
+    = f.text_field :name, id: 'name'
+    = f.submit "create"

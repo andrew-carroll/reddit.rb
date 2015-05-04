@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502222326) do
+ActiveRecord::Schema.define(version: 20150504152255) do
+
+  create_table "subreddits", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subreddits", ["name"], name: "index_subreddits_on_name", unique: true
+  add_index "subreddits", ["user_id"], name: "index_subreddits_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
