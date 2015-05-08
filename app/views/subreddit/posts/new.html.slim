@@ -1,0 +1,12 @@
+= flash[:error] if flash[:error]
+section
+  h1 submit to #{params[:subreddit_id]}
+  = form_for @post, url: new_subreddit_post_path,
+    html: { id: 'link_post' } do |f|
+    = f.label :title
+    = f.text_field :title
+    = f.label :url
+    = f.text_field :url
+    = f.label :subreddit, 'choose a subreddit'
+    = f.text_field :subreddit, value: @subreddit.name
+    = f.submit 'submit'
