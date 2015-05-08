@@ -1,1 +1,19 @@
 h1= link_to @post.title, @post.url
+
+= flash[:error] if flash[:error]
+- if current_user
+  = form_for [@post, @comment], url: comments_path(@subreddit, @post),
+    html: { id: 'post_reply' } do |f|
+    = f.text_field :body
+    = f.submit 'Save'
+
+- @comments.each do |comment|
+  article.comment
+    .byline
+      address= link_to comment.user.username, user_path(comment.user)
+      time(
+        pubdate
+        datetime="#{comment.created_at.strftime('%Y-%m-%d')}"
+        title="#{comment.created_at.strftime('%a %b%e %H:%M:%S %Y %Z')}"
+      )
+    p= comment.body

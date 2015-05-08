@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     post '/submit', to: 'subreddit/posts#create'
     scope '/comments/:post_id(/:post_slug)' do
       get '/', to: 'post/comments#index', as: 'comments'
+      post '/', to: 'post/comments#create'
     end
+  end
+
+  scope '/user/:user_id' do
+    get '/', to: 'users#show', as: 'user'
   end
 end

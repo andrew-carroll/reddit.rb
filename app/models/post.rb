@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
-  belongs_to :subreddit, required: true
   validates :subreddit, presence: true
   validates :title, presence: true
+
+  has_many :comments
+  belongs_to :subreddit, required: true
 end
