@@ -20,8 +20,4 @@ class SubredditsController < ApplicationController
   def subreddit_params
     params.require(:subreddit).permit(:name)
   end
-
-  def authenticate
-    redirect_to login_path unless current_user
-  end
 end

@@ -12,5 +12,9 @@ class ApplicationController < ActionController::Base
     user
   end
 
+  def authenticate
+    redirect_to login_path unless current_user
+  end
+
   helper_method :current_user
 end
