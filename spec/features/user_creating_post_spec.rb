@@ -27,8 +27,8 @@ end
 def create_link_post(title, url)
   visit new_subreddit_post_path('programming')
   within 'form#link_post' do
-    fill_in 'title', with: title
-    fill_in 'url', with: url
+    fill_in 'post_title', with: title
+    fill_in 'post_url', with: url
     click_button 'submit'
   end
 end
