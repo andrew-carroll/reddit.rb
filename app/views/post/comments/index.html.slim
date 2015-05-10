@@ -15,5 +15,5 @@ h1= link_to @post.title, @post.url
         pubdate
         datetime="#{comment.created_at.strftime('%Y-%m-%d')}"
         title="#{comment.created_at.strftime('%a %b%e %H:%M:%S %Y %Z')}"
-      )
+      )= submitted_time_ago(comment)
     p= comment.body
