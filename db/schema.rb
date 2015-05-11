@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511022531) do
+ActiveRecord::Schema.define(version: 20150511030624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +57,11 @@ ActiveRecord::Schema.define(version: 20150511022531) do
     t.datetime "updated_at",           null: false
     t.integer  "post_upvotes_count"
     t.integer  "post_downvotes_count"
+    t.integer  "user_id",              null: false
   end
 
   add_index "posts", ["subreddit_id"], name: "index_posts_on_subreddit_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "subreddits", force: :cascade do |t|
     t.string   "name",       null: false
@@ -89,5 +91,6 @@ ActiveRecord::Schema.define(version: 20150511022531) do
   add_foreign_key "post_upvotes", "posts"
   add_foreign_key "post_upvotes", "users"
   add_foreign_key "posts", "subreddits"
+  add_foreign_key "posts", "users"
   add_foreign_key "subreddits", "users"
 end

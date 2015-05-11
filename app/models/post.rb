@@ -6,4 +6,5 @@ class Post < ActiveRecord::Base
   has_many :upvotes, class_name: :PostUpvote
   has_many :downvotes, class_name: :PostDownvote
   belongs_to :subreddit, required: true
+  belongs_to :user, required: true
 end
