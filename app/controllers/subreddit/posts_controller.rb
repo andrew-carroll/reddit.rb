@@ -22,11 +22,8 @@ class Subreddit::PostsController < ApplicationController
   private
 
   def post_params
-    n = params.require(:post).permit(:title, :url, :subreddit)
-    if n[:subreddit].class == String
-      n[:subreddit] = Subreddit.find_by_name(n[:subreddit])
-    end
-    return n
+    params.require(:post).permit(:title, :url).
+      merge(subreddit: @subreddit, user: current_user)
   end
 
   def set_subreddit

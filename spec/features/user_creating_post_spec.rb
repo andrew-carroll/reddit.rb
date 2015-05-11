@@ -15,7 +15,7 @@ feature 'User creating post' do
 
   context 'while logged in' do
     background do
-      @user = login()
+      login()
     end
     scenario 'succeeds and is redirected to the post' do
       create_link_post('My first post', 'www.google.com')
