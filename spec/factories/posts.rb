@@ -3,5 +3,6 @@ FactoryGirl.define do
     title "MyString"
     url "MyString"
     subreddit factory: :subreddit
+    user factory: :user
   end
 end
