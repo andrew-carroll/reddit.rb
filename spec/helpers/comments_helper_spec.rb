@@ -3,7 +3,7 @@ include ActiveSupport::Testing::TimeHelpers
 
 describe CommentsHelper do
   describe '#submitted_time_ago' do
-    before(:context) { @comment = create(:comment) }
+    before(:example) { @comment = create(:comment) }
     ['second', 'minute', 'hour', 'day', 'month', 'year'].each do |time_unit|
       context "#{time_unit}s after creation" do
         it "returns a string detailing #{time_unit}s since creation" do
