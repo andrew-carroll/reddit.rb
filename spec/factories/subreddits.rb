@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :subreddit do
-    name "MyString"
+    sequence(:name) do |n|
+      "subreddit#{n}"
+    end
     user factory: :user
   end
 
